@@ -71,7 +71,7 @@ const DynamicTablePage = () => {
         tableData: tableId,
       };
       const response = await axios.put(
-        `http://127.0.0.1:8000/api/sections/${currentSection.id}/`,
+        `https://nasribrahim.pythonanywhere.com/api/sections/${currentSection.id}/`,
         updatedData
       );
       console.log("Data saved successfully:", response.data);

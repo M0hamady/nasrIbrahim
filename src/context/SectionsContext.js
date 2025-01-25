@@ -18,7 +18,7 @@ export const SectionsProvider = ({ children }) => {
   useEffect(() => {
     const fetchSectionsData = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/sections/", {
+        const response = await fetch("https://nasribrahim.pythonanywhere.com/api/sections/", {
           headers: {
             Authorization: `Bearer ${token}`,
             'Accept-Language': language,
@@ -49,7 +49,7 @@ export const SectionsProvider = ({ children }) => {
 
     setIsAdding(true);
     try {
-      const response = await axios.post(`http://127.0.0.1:8000/api/sections/${newSection.id}/`, {
+      const response = await axios.post(`https://nasribrahim.pythonanywhere.com/api/sections/${newSection.id}/`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -77,7 +77,7 @@ export const SectionsProvider = ({ children }) => {
 
     setIsUpdating(true);
     try {
-      const response = await axios.put(`http://127.0.0.1:8000/api/sections/${updatedSection.id}/`, {
+      const response = await axios.put(`https://nasribrahim.pythonanywhere.com/api/sections/${updatedSection.id}/`, {
       method: "PATCH",
         headers: {
           "Content-Type": "application/json",

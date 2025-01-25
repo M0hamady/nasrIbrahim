@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
   // Function to handle login and save user data and token to localStorage
   const login = async (email, password) => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/accounts/login/', {
+      const response = await fetch('https://nasribrahim.pythonanywhere.com/accounts/login/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ export const AuthProvider = ({ children }) => {
 
       const idToken = await user.getIdToken();
 
-      const response = await fetch('http://127.0.0.1:8000/google/login/', {
+      const response = await fetch('https://nasribrahim.pythonanywhere.com/google/login/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
