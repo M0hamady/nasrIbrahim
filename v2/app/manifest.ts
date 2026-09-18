@@ -1,0 +1,2 @@
+import type { MetadataRoute } from "next";
+export default function manifest(): MetadataRoute.Manifest { return { name:"Esraa Learning Hub", short_name:"Esraa Learn", description:"Child-first Early Years and Primary learning platform", start_url:"/", display:"standalone", background_color:"#fffaf5", theme_color:"#6d5dfc", icons:[{src:"/icon.svg",sizes:"any",type:"image/svg+xml"}] }; }
