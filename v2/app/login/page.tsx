@@ -1,0 +1,6 @@
+"use client";
+import { FormEvent, useState } from "react";
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+export default function Login(){const {login,isDemo}=useAuth();const router=useRouter();const [error,setError]=useState("");const submit=async(e:FormEvent<HTMLFormElement>)=>{e.preventDefault();setError("");const f=new FormData(e.currentTarget);try{await login(String(f.get("email")),String(f.get("password")));router.push("/dashboard")}catch(err){setError(err instanceof Error?err.message:"Could not sign in")}};return <section className="auth-page"><form className="auth-card" onSubmit={submit}><div className="auth-icon">🔐</div><span className="eyebrow">Welcome back</span><h1>Sign in</h1>{isDemo&&<div className="demo-note">Demo mode is active. Any email/password works. Include <b>parent</b> or <b>teacher</b> in the email to preview that role.</div>}<label>Email<input name="email" type="email" defaultValue="student@example.com" required/></label><label>Password<input name="password" type="password" defaultValue="demo1234" required minLength={6}/></label>{error&&<p className="error">{error}</p>}<button className="primary-btn full">Sign in</button><p>New here? <Link href="/register">Create an account</Link></p></form></section>}

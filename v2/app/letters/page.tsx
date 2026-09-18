@@ -1,0 +1,7 @@
+"use client";
+import { useState } from "react";
+import { useProgress } from "@/context/ProgressContext";
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+const words: Record<string, string> = { A:"apple",B:"ball",C:"cat",D:"dog",E:"egg",F:"fish",G:"goat",H:"hat",I:"igloo",J:"jam",K:"kite",L:"lion",M:"moon",N:"nest",O:"orange",P:"pen",Q:"queen",R:"rain",S:"sun",T:"tree",U:"umbrella",V:"van",W:"water",X:"x-ray",Y:"yellow",Z:"zebra" };
+const speak = (text:string) => { if (typeof window !== "undefined" && "speechSynthesis" in window) speechSynthesis.speak(new SpeechSynthesisUtterance(text)); };
+export default function LettersPage() { const [selected,setSelected]=useState("A"); const {record}=useProgress(); return <><section className="page-hero letters-hero"><div className="wrap"><span className="eyebrow">Letters & Sounds</span><h1>See it. Say it. Hear it.</h1><p>A playful phonics wall for FS1, FS2 and early Grade 1.</p></div></section><section className="wrap section"><div className="letter-focus"><div className="giant-letter">{selected}</div><div><h2>{selected} is for {words[selected]}.</h2><button className="primary-btn" onClick={() => { speak(\`\${selected}. \${words[selected]}\`); record("English",100,2); }}>🔊 Hear it</button></div></div><div className="letter-grid">{letters.map((l)=><button key={l} className={l===selected?"active":""} onClick={()=>{setSelected(l);speak(l)}}>{l}<small>{words[l]}</small></button>)}</div></section></>; }

@@ -1,0 +1,6 @@
+"use client";
+import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
+import ProgressBars from "@/components/ProgressBars";
+import SmartCoach from "@/components/SmartCoach";
+export default function Dashboard(){const {user,loading}=useAuth();if(loading)return <div className="loading">Loading…</div>;if(!user)return <section className="wrap section"><h1>Please sign in</h1><Link className="primary-btn" href="/login">Sign in</Link></section>;return <><section className="dashboard-hero"><div className="wrap"><span className="eyebrow">Student dashboard</span><h1>Hi {user.name} 👋</h1><p>Small steps, visible progress.</p></div></section><section className="wrap section dashboard-grid"><div className="panel"><h2>Your progress</h2><ProgressBars/><Link href="/reports" className="text-link">Open full report →</Link></div><div><SmartCoach/><div className="quick-grid"><Link href="/science">🔬 Science mission</Link><Link href="/numbers">🔢 Number sprint</Link><Link href="/letters">🔤 Letter practice</Link><Link href="/learn">🗺️ Curriculum map</Link></div></div></section></>}
